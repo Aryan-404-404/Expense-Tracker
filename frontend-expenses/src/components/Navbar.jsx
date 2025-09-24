@@ -67,9 +67,11 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/transactions" className="hover:text-blue-600 transition-colors duration-200 font-medium">
-                        Transactions
-                    </Link>
+                    {user && (
+                        <Link to="/transactions" className="hover:text-blue-600 transition-colors duration-200 font-medium">
+                            Transactions
+                        </Link>
+                    )}
                 </li>
                 {!user && (
                     <Link to="/login" className="hover:text-blue-600 transition-colors duration-200 font-medium justify-center">
