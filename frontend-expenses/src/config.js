@@ -1,4 +1,4 @@
 const config = {
-    apiUrl: 'http://localhost:3000/'
+    apiUrl: 'https://expense-tracker-frontend-frqq.onrender.com'
 };
 export default config;
