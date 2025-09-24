@@ -45,11 +45,9 @@ const Navbar = () => {
         try {
             await api.post('/user/logout/');
             console.log("logged-out");
-            setuser(null); 
-            navigate('/');
-
-        }
-        catch (err) {
+            setuser(null);
+            window.location.href = "/";
+        } catch (err) {
             console.log("Logout error:", err)
         }
     }
