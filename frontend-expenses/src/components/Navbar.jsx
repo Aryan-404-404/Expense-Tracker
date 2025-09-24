@@ -43,15 +43,14 @@ const Navbar = () => {
 
     const handleSignout = async () => {
         try {
-            const res = await api.post('/user/logout/');
-            console.log("logged-out")
-            navigate('/')
-            window.location.href = "/";
-            res.send(200).json({ message: "Logged-out" })
+            await api.post('/user/logout/');
+            console.log("logged-out");
+            setuser(null); 
+            navigate('/');
 
         }
         catch (err) {
-            throw new Error(err.response)
+            console.log("Logout error:", err)
         }
     }
 
