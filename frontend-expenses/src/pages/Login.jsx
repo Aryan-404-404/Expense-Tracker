@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import api from '../api/axios'
 import { useNavigate } from 'react-router-dom';
+import loadingSvg from '../resources/loading.svg';
 
 export default function Login() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [toast, settoast] = useState("")
+  const [loading, setLoading] = useState(false);
   const [form, setform] = useState({
     userName: "",
     email: "",
@@ -18,6 +20,7 @@ export default function Login() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true);
     try {
       if (isLogin) {
         const res = await api.post('/user/login', {
@@ -64,11 +67,14 @@ export default function Login() {
     }
     catch (err) {
       const msg = err.response?.data?.message || err.message || "Something went wrong";
-        settoast(`Unexpected error: ${msg}`);
+      settoast(`Unexpected error: ${msg}`);
       setTimeout(() => {
         settoast("")
       }, 2000);
       console.error(err.response?.data || err.message)
+    }
+    finally {
+      setLoading(false);
     }
   }
 
@@ -157,11 +163,19 @@ export default function Login() {
               </div>
             )}
 
-            <button onClick={handleSubmit} className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium cursor-pointer">
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              className={`w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium cursor-pointer ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
+            >
               {isLogin ? 'Sign In' : 'Create Account'}
             </button>
           </div>
-
+          {loading && (
+            <div className="flex justify-center my-4">
+              <img src={loadingSvg} alt="Loading..." className="w-8 h-8 animate-spin" />
+            </div>
+          )}
           <div className="mt-8 text-center">
             <p className="text-gray-600">
               {isLogin ? "Don't have an account? " : "Already have an account? "}
