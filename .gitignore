@@ -1,0 +1,3 @@
+backend-expenses/node_modules/
+frontend-expenses/node_modules/
+backend-expenses/.env
