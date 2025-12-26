@@ -32,15 +32,6 @@ const getTransaction = asyncHandler(async (req, res) => {
     res.status(200).json(transaction)
 })
 
-const getTransactionById = asyncHandler(async (req, res) => {
-    const transaction = await Transaction.findById(req.params.id).populate('userId', 'userName email');
-    if (!transaction) {
-        res.status(404)
-        throw new Error("Transaction not found!")
-    }
-    res.status(200).json(transaction)
-})
-
 const deleteTransaction = asyncHandler(async (req, res) => {
     const transaction = await Transaction.findById(req.params.id)
     if (!transaction) {
@@ -190,4 +181,4 @@ const getCategoryState = asyncHandler(async (req, res) => {
     res.json(sorted)
 })
 
-module.exports = { createTransaction, getTransaction, getTransactionById, deleteTransaction, updateTransaction, getStats, getChartData, getCategoryState }
+module.exports = { createTransaction, getTransaction, deleteTransaction, updateTransaction, getStats, getChartData, getCategoryState }

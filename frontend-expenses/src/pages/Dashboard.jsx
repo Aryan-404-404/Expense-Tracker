@@ -8,16 +8,11 @@ import {
   TrendingUp,
   TrendingDown,
   Wallet,
-  CreditCard,
   PieChart,
-  Calendar,
   ArrowUpRight,
   ArrowDownRight,
   Plus,
-  Filter,
-  Download
 } from 'lucide-react';
-import axios from 'axios';
 
 const Dashboard = () => {
 
