@@ -57,14 +57,14 @@ const login = asyncHandler(async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
-            sameSite: "one",
+            sameSite: "none",
             maxAge: 24*60*60*1000,
         })
         res.json({token: token, user: user.email})
     }
     else{
         res.status(400);
-        throw new error("Email or password is incorrect!")
+        throw new Error("Email or password is incorrect!")
     }
 })
 
