@@ -4,7 +4,7 @@ A full-stack financial management application built with the **MERN Stack**. Tra
 
 ## 🚀 Live Demo
 
-**[View Live Application](https://expense-tracker-frontend-frqq.onrender.com/)**
+**[View Live Application](https://ai-expense-tracker-seven-alpha.vercel.app/)**
 
 ---
 
