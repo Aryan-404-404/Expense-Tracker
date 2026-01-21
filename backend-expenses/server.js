@@ -21,6 +21,9 @@ app.use(require("./middlewares/errorHandler"))
 app.get('/', (req, res)=>{
     res.send("Expense manager")
 })
+app.get('/ping', (req, res) => {        // To wake the server (render free tier)
+    res.send('Pong');
+});
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);
 })
