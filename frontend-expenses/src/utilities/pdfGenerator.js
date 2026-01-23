@@ -1,8 +1,7 @@
 // src/utils/pdfGenerator.js
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
-export const generateFinancialPDF = async (financialData, categories, recentTransactions) => {
+export const generateFinancialPDF = async (financialData, categories) => {
     try {
         // Create new PDF document (portrait, millimeters, A4 size)
         const pdf = new jsPDF('p', 'mm', 'a4');
