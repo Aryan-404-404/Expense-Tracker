@@ -1,4 +1,4 @@
 const config = {
-    apiUrl: 'https://expense-tracker-wy11.onrender.com'
+    apiUrl: import.meta.env.VITE_API_URL
 };
 export default config;
