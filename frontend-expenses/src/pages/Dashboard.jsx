@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [showInput, setshowInput] = useState(false)
   const [balanceArray, setbalanceArray] = useState([])
   const [trendArray, settrendArray] = useState([])
-  const [range, setrange] = useState('30d')
+  const [range, setrange] = useState(null)
   const [recentTransactions, setrecentTransactions] = useState([])
   const [info, setinfo] = useState({ name: "" })
   const [categories, setcategories] = useState([])
@@ -473,7 +473,7 @@ const Dashboard = () => {
             {recentTransactions.length === 0 ? (
               <p className="text-gray-500">No transactions yet</p>
             ) : (
-              recentTransactions.map((t, i) => {
+              recentTransactions.slice(-10).map((t, i) => {
                 return (
                   <div key={t._id} className="flex items-center justify-between">
                     <div className="flex items-center space-x-3 my-3">
